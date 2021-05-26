@@ -20,7 +20,7 @@ The following changes have been done on top of it:
 
 This will allow relay from all private address ranges and will relay directly to the internet receiving mail servers
 
-```
+````
 docker run \
        --user=100:101 \
        --name smtp \
