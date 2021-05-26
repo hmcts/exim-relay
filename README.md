@@ -16,7 +16,7 @@ The following changes have been done on top of it:
 
 ## Docker
 
-### Default setup
+### Default setup.
 
 This will allow relay from all private address ranges and will relay directly to the internet receiving mail servers
 
