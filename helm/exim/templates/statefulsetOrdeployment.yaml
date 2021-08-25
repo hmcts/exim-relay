@@ -74,7 +74,7 @@ spec:
             readOnly: true
           {{- end }}
           {{- if .Values.global.enableAuth }}
-          - mountPath: "/etc/ssl/internal/updated"
+          - mountPath: "/etc/ssl/internal"
             name: exim-certs
             readOnly: true
           {{- end }}
