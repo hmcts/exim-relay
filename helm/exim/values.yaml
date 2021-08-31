@@ -70,7 +70,7 @@ smtp:
 
 # default ssl cert details
 ssl:
-  defaultOut: mailrelay-dev-ssl
+  defaultOut: mailrelay-outbound-ssl
   defaultOutCert: dev-mailrelay-cert
   defaultOutKey: dev-mailrelay-key
 
