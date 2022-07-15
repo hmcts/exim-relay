@@ -47,6 +47,12 @@ spec:
             name: {{ template "exim.fullname" . }}
         - secretRef:
             name: {{ template "exim.fullname" . }}
+        env:
+        - name: SMARTHOST
+          valueFrom:
+            secretKeyRef:
+              name: eximenvsecrets
+              key: relayhost
         ports:
           - name: smtp
             containerPort: 25
@@ -73,11 +79,15 @@ spec:
             name: exim-passwd
             readOnly: true
           {{- end }}
-          {{- if .Values.fluentbit.enabled }}
+          {{- if .Values.fluentbit.enabled }}          
           - mountPath: /var/log/exim
             name: log-volume
           {{- end }}
+          - mountPath: "/etc/exim/secrets"
+            name: exim-mailrelay-env-secrets-provider
+            readOnly: true
         {{- end }}
+ 
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       {{- if .Values.fluentbit.enabled }}
@@ -163,6 +173,12 @@ spec:
             volumeAttributes:
               secretProviderClass: "mailrelay-inbound-keyvault-certificate-provider"
         {{- end }}
+        - name: exim-mailrelay-env-secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "exim-mailrelay-env-secrets-provider"
       {{- end }}
 
   {{- if eq .Values.workload "StatefulSet" }}
