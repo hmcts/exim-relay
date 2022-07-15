@@ -8,12 +8,13 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  SMARTHOST: '{{ .Values.smtp.relayHost }}'
-  HOSTNAME: '{{ .Values.smtp.relayHostname }}'
-  RELAY_FROM_HOSTS: '{{ .Values.smtp.relayFromHosts }}'
+  # These values have been removed and are now retrieved via CSI
+  # SMARTHOST: '{{ .Values.smtp.relayHost }}'
+  # HOSTNAME: '{{ .Values.smtp.relayHostname }}'
+  # RELAY_FROM_HOSTS: '{{ .Values.smtp.relayFromHosts }}'
+  # RELAY_TO_DOMAINS: '{{ .Values.smtp.relayToDomains }}'
   LOCAL_DOMAINS: '{{ .Values.smtp.localDomains }}'
   SMTP_USERNAME: '{{ .Values.smtp.relayUsername }}'
-  RELAY_TO_DOMAINS: '{{ .Values.smtp.relayToDomains }}'
   RELAY_TO_USERS: '{{ .Values.smtp.relayToUsers }}'
   DISABLE_SENDER_VERIFICATION: '{{ .Values.smtp.relayDisableSenderVerification }}'
 {{- if .Values.fluentbit.enabled }}

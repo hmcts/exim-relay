@@ -57,7 +57,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: eximenvsecrets
-              key: relayhost      
+              key: relayhostname    
         - name: RELAY_FROM_HOSTS
           valueFrom:
             secretKeyRef:
