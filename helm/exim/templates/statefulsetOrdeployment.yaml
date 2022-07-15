@@ -53,6 +53,24 @@ spec:
             secretKeyRef:
               name: eximenvsecrets
               key: relayhost
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            secretKeyRef:
+              name: eximenvsecrets
+              key: relayhost      
+        env:
+        - name: RELAY_FROM_HOSTS
+          valueFrom:
+            secretKeyRef:
+              name: eximenvsecrets
+              key: relayfromhosts
+        env:
+        - name: RELAY_TO_DOMAINS
+          valueFrom:
+            secretKeyRef:
+              name: eximenvsecrets
+              key: relaytodomains
         ports:
           - name: smtp
             containerPort: 25
