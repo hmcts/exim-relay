@@ -176,7 +176,7 @@ This can all be configured using the following variables (see also [helm/exim-re
 
 The following table lists the configurable parameters of the chart and their default values (see variables section for a description).
 
-| Parameter                  | Variable         | Location | Default  |
+| Parameter                  | Variable         | Source   | Default  |
 | -------------------------- | ---------------- | -------- | -------- |
 | `relayHost`                | SMARTHOST        |  `CSI`  | `smtp.example.com::587` |
 | `relayHostname`            | HOSTNAME         |  `CSI`  | `my.host.local` |
