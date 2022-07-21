@@ -99,7 +99,7 @@ spec:
             name: log-volume
           {{- end }}
           - mountPath: "/etc/exim/secrets"
-            name: exim-mailrelay-env-secrets-provider
+            name: exim-mailrelay-env-secrets
             readOnly: true
         {{- end }}
  
