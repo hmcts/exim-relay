@@ -104,6 +104,7 @@ certificate:
 
 fluentbit:
   enabled: false
+  securityContext: {}
   image:
     repository: fluent/fluent-bit
     tag: 1.7.2
@@ -111,6 +112,7 @@ fluentbit:
 
 eximexporter:
   enabled: false
+  securityContext: {}
   image:
     repository: exim-exporter
     tag: 0.3

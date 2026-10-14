@@ -109,6 +109,10 @@ spec:
       - name: fluentbit
         image: '{{ .Values.fluentbit.image.repository }}:{{ .Values.fluentbit.image.tag }}'
         imagePullPolicy: IfNotPresent
+        {{- with .Values.fluentbit.securityContext }}
+        securityContext:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
         volumeMounts:
           - name: fluentbit-config-volume
             mountPath: /fluent-bit/etc/
@@ -119,6 +123,10 @@ spec:
       - name: eximexporter
         image: '{{ .Values.eximexporter.image.repository }}:{{ .Values.eximexporter.image.tag }}'
         imagePullPolicy: IfNotPresent
+        {{- with .Values.eximexporter.securityContext }}
+        securityContext:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
         env:
           - name: EXIM_EXECUTABLE
             value: exim
