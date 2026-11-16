@@ -109,6 +109,8 @@ spec:
       - name: fluentbit
         image: '{{ .Values.fluentbit.image.repository }}:{{ .Values.fluentbit.image.tag }}'
         imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
         volumeMounts:
           - name: fluentbit-config-volume
             mountPath: /fluent-bit/etc/
@@ -119,6 +121,8 @@ spec:
       - name: eximexporter
         image: '{{ .Values.eximexporter.image.repository }}:{{ .Values.eximexporter.image.tag }}'
         imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
         env:
           - name: EXIM_EXECUTABLE
             value: exim
